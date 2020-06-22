@@ -1,0 +1,43 @@
+import java.util.*;
+public class Java8Comparator{
+        
+        
+    
+     public static void main(String []args){
+
+        Comparator<Employee> empComparator = Comparator.comparing(Employee::getAge).thenComparing(Employee::getName);
+        Employee e1 = new Employee("Shreya", 21);
+        Employee e2 = new Employee("Anshul", 25);
+        Employee e3 = new Employee("Rohit", 30);
+        Employee e4 = new Employee("Ankit", 21);
+        Employee [] empArr = new Employee[]{e1,e2,e3,e4};
+        Arrays.sort(empArr, empComparator);
+         System.out.println("Sorting by Name");
+       System.out.println(Arrays.toString(empArr));
+     }
+     
+     
+}
+ class Employee {
+    String name;
+    int age;
+    double salary;
+    long mobile;
+    
+    String getName(){
+        return name;
+    }
+    
+    int getAge(){
+        return age;
+    }
+    
+    public String toString(){
+        return "{ Name: " +this.getName() + ", Age: " + this.getAge() + " } ";
+    }
+    
+    Employee(String name, int age){
+        this.name = name;
+        this.age = age;
+    }
+}
